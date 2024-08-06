@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.10.4 on win32)" generated="2024-08-05T18:25:51.624405" rpa="false" schemaversion="5">
+<suite id="s1" name="testAPI" source="C:\Python\Homework4\playwright_tests\tests\testAPI.robot">
+<test id="s1-t1" name="Create User (POST)" line="19">
+<kw name="Create Api Session" owner="keywords">
+<arg>${BASE_URL}</arg>
+<status status="PASS" start="2024-08-05T18:25:52.020496" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-08-05T18:25:52.022498" level="INFO">${data} = {'username': 'JohnQA', 'firstName': 'John', 'lastName': 'Smith', 'email': 'mihai@yopmail.com', 'password': 'sJgimo777', 'phone': '77777'}</msg>
+<var>${data}</var>
+<arg>username=${USER_NAME_TO_ADD}</arg>
+<arg>firstName=${FIRST_NAME_TO_ADD}</arg>
+<arg>lastName=${LAST_NAME_TO_ADD}</arg>
+<arg>email=${EMAIL_TO_ADD}</arg>
+<arg>password=${PASSWORD_TO_ADD}</arg>
+<arg>phone=${PHONE_TO_ADD}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-08-05T18:25:52.021498" elapsed="0.003001"/>
+</kw>
+<kw name="POST Request" owner="apiPage">
+<kw name="Perform Post Request" owner="keywords">
+<msg time="2024-08-05T18:25:52.569067" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${endpoint}</arg>
+<arg>${data}</arg>
+<status status="PASS" start="2024-08-05T18:25:52.025503" elapsed="0.543564"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>The status of the request: ${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-08-05T18:25:52.569067" elapsed="0.001002"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>The content of the request: ${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-08-05T18:25:52.571068" elapsed="0.000997"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2024-08-05T18:25:52.572065" elapsed="0.001000"/>
+</return>
+<msg time="2024-08-05T18:25:52.573065" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>/user</arg>
+<arg>${data}</arg>
+<status status="PASS" start="2024-08-05T18:25:52.024499" elapsed="0.548566"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2024-08-05T18:25:52.574064" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2024-08-05T18:25:52.573065" elapsed="0.000999"/>
+</kw>
+<doc>A post request to create a new user</doc>
+<status status="PASS" start="2024-08-05T18:25:52.018495" elapsed="0.555569"/>
+</test>
+<test id="s1-t2" name="Get User Details (GET)" line="26">
+<kw name="Create new API Session" owner="apiPage">
+<kw name="Create Api Session" owner="keywords">
+<arg>${base_url}</arg>
+<status status="PASS" start="2024-08-05T18:25:52.576066" elapsed="0.000000"/>
+</kw>
+<arg>${BASE_URL}</arg>
+<status status="PASS" start="2024-08-05T18:25:52.575064" elapsed="0.002004"/>
+</kw>
+<kw name="GET Request" owner="apiPage">
+<kw name="Perform Get Request" owner="keywords">
+<msg time="2024-08-05T18:25:53.062305" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${endpoint}</arg>
+<status status="PASS" start="2024-08-05T18:25:52.578076" elapsed="0.484229"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>The status of the request: ${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-08-05T18:25:53.062305" elapsed="0.001000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>The content of the request: ${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-08-05T18:25:53.063305" elapsed="0.001006"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2024-08-05T18:25:53.064311" elapsed="0.000000"/>
+</return>
+<msg time="2024-08-05T18:25:53.065312" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>/user/${USER_NAME_TO_ADD}</arg>
+<status status="PASS" start="2024-08-05T18:25:52.577068" elapsed="0.488244"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2024-08-05T18:25:53.065312" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2024-08-05T18:25:53.065312" elapsed="0.000000"/>
+</kw>
+<doc>Perform a GET request to fetch user details.</doc>
+<status status="PASS" start="2024-08-05T18:25:52.575064" elapsed="0.491255"/>
+</test>
+<test id="s1-t3" name="Log in User" line="32">
+<kw name="Create Api Session" owner="keywords">
+<arg>${BASE_URL}</arg>
+<status status="PASS" start="2024-08-05T18:25:53.067318" elapsed="0.000000"/>
+</kw>
+<kw name="GET Request" owner="apiPage">
+<kw name="Perform Get Request" owner="keywords">
+<msg time="2024-08-05T18:25:53.570687" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${endpoint}</arg>
+<status status="PASS" start="2024-08-05T18:25:53.068298" elapsed="0.502389"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>The status of the request: ${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-08-05T18:25:53.570687" elapsed="0.001000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>The content of the request: ${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-08-05T18:25:53.571687" elapsed="0.001000"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2024-08-05T18:25:53.572687" elapsed="0.000000"/>
+</return>
+<msg time="2024-08-05T18:25:53.572687" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>/user/login?username=${USER_NAME_TO_ADD}&amp;password=${PASSWORD_TO_ADD}</arg>
+<status status="PASS" start="2024-08-05T18:25:53.067318" elapsed="0.505369"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2024-08-05T18:25:53.574694" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2024-08-05T18:25:53.573680" elapsed="0.001014"/>
+</kw>
+<status status="PASS" start="2024-08-05T18:25:53.573680" elapsed="0.001014"/>
+</branch>
+<branch type="EXCEPT">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>User does not exist. Try again.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2024-08-05T18:25:53.574694" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-08-05T18:25:53.574694" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2024-08-05T18:25:53.573680" elapsed="0.001014"/>
+</try>
+<doc>Logs in user</doc>
+<status status="PASS" start="2024-08-05T18:25:53.066319" elapsed="0.508375"/>
+</test>
+<test id="s1-t4" name="Perform PUT Request to update user details" line="43">
+<kw name="Create Api Session" owner="keywords">
+<arg>${BASE_URL}</arg>
+<status status="PASS" start="2024-08-05T18:25:53.575688" elapsed="0.001000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-08-05T18:25:53.576688" level="INFO">${data} = {'username': 'JohnQA', 'firstName': 'Andrei', 'lastName': 'Smith', 'email': 'mihai@yopmail.com', 'password': 'sJgimo777', 'phone': '77777'}</msg>
+<var>${data}</var>
+<arg>username=${USER_NAME_TO_ADD}</arg>
+<arg>firstName=Andrei</arg>
+<arg>lastName=${LAST_NAME_TO_ADD}</arg>
+<arg>email=${EMAIL_TO_ADD}</arg>
+<arg>password=${PASSWORD_TO_ADD}</arg>
+<arg>phone=${PHONE_TO_ADD}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-08-05T18:25:53.576688" elapsed="0.000000"/>
+</kw>
+<kw name="PUT Request" owner="apiPage">
+<kw name="Perform Put Request" owner="keywords">
+<msg time="2024-08-05T18:25:54.076647" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${endpoint}</arg>
+<arg>${data}</arg>
+<status status="PASS" start="2024-08-05T18:25:53.577694" elapsed="0.498953"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>The status of the request: ${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-08-05T18:25:54.076647" elapsed="0.001001"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>The content of the request: ${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-08-05T18:25:54.077648" elapsed="0.001000"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2024-08-05T18:25:54.078648" elapsed="0.000000"/>
+</return>
+<msg time="2024-08-05T18:25:54.078648" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>/user/${USER_NAME_TO_ADD}</arg>
+<arg>${data}</arg>
+<status status="PASS" start="2024-08-05T18:25:53.576688" elapsed="0.501960"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2024-08-05T18:25:54.079648" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2024-08-05T18:25:54.079648" elapsed="0.000000"/>
+</kw>
+<doc>Perform a PUT request to update pet details.</doc>
+<status status="PASS" start="2024-08-05T18:25:53.575688" elapsed="0.503960"/>
+</test>
+<test id="s1-t5" name="Log out User" line="50">
+<kw name="Create Api Session" owner="keywords">
+<arg>${BASE_URL}</arg>
+<status status="PASS" start="2024-08-05T18:25:54.081648" elapsed="0.000000"/>
+</kw>
+<kw name="GET Request" owner="apiPage">
+<kw name="Perform Get Request" owner="keywords">
+<msg time="2024-08-05T18:25:54.562929" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${endpoint}</arg>
+<status status="PASS" start="2024-08-05T18:25:54.081648" elapsed="0.482294"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>The status of the request: ${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-08-05T18:25:54.563942" elapsed="0.000998"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>The content of the request: ${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-08-05T18:25:54.564940" elapsed="0.001985"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2024-08-05T18:25:54.566925" elapsed="0.000000"/>
+</return>
+<msg time="2024-08-05T18:25:54.566925" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>/user/logout</arg>
+<status status="PASS" start="2024-08-05T18:25:54.081648" elapsed="0.485277"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2024-08-05T18:25:54.567932" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2024-08-05T18:25:54.567932" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-08-05T18:25:54.566925" elapsed="0.002014"/>
+</branch>
+<branch type="EXCEPT">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>User does not exist. Try again.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2024-08-05T18:25:54.568939" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-08-05T18:25:54.568939" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2024-08-05T18:25:54.566925" elapsed="0.002014"/>
+</try>
+<doc>Logs out user</doc>
+<status status="PASS" start="2024-08-05T18:25:54.080648" elapsed="0.488291"/>
+</test>
+<test id="s1-t6" name="Perform DELETE Request to delete user" line="61">
+<kw name="Create Api Session" owner="keywords">
+<arg>${BASE_URL}</arg>
+<status status="PASS" start="2024-08-05T18:25:54.569945" elapsed="0.001000"/>
+</kw>
+<kw name="DELETE Request" owner="apiPage">
+<kw name="Perform Delete Request" owner="keywords">
+<msg time="2024-08-05T18:25:55.054971" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${endpoint}</arg>
+<status status="PASS" start="2024-08-05T18:25:54.570945" elapsed="0.484026"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>The status of the request: ${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-08-05T18:25:55.054971" elapsed="0.001000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>The content of the request: ${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-08-05T18:25:55.055971" elapsed="0.001002"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2024-08-05T18:25:55.056973" elapsed="0.000000"/>
+</return>
+<msg time="2024-08-05T18:25:55.056973" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>/user/${USER_NAME_TO_ADD}</arg>
+<status status="PASS" start="2024-08-05T18:25:54.570945" elapsed="0.486028"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2024-08-05T18:25:55.058976" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2024-08-05T18:25:55.057974" elapsed="0.001002"/>
+</kw>
+<status status="PASS" start="2024-08-05T18:25:55.057974" elapsed="0.001002"/>
+</branch>
+<branch type="EXCEPT">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>User does not exist. Try again.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2024-08-05T18:25:55.058976" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-08-05T18:25:55.058976" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2024-08-05T18:25:55.057974" elapsed="0.001002"/>
+</try>
+<doc>Perform a DELETE request to remove the pet.</doc>
+<status status="PASS" start="2024-08-05T18:25:54.569945" elapsed="0.489031"/>
+</test>
+<status status="PASS" start="2024-08-05T18:25:51.627403" elapsed="3.432577"/>
+</suite>
+<statistics>
+<total>
+<stat pass="6" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="6" fail="0" skip="0" id="s1" name="testAPI">testAPI</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
